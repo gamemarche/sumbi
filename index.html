@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <style> 
+    <style>
         :root {
             --primary: #6f42c1;
             --primary-light: #f5f0ff;
@@ -363,7 +363,7 @@
             </div>
         </section>
         
-    </div> 
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -386,6 +386,13 @@
                     });
                 }
             });
+        });
+
+        // iframe 내부에서 전달되는 전화걸기 메시지 수신 및 다이얼 호출
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'DIAL_PHONE') {
+                window.location.href = 'tel:' + event.data.number;
+            }
         });
     </script>
 </body>
