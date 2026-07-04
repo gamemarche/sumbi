@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숨비 in 치유 - 프리미엄 아로마 테라피 & 실시간 예약</title>
+    
+    <!-- Google Fonts: Outfit & Noto Sans KR -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #6f42c1;
+            --primary-light: #f5f0ff;
+            --bg-color: #faf8f5;
+            --text-dark: #2c2523;
+            --text-light: #706865;
+            --accent: #fd7e14;
+            --card-shadow: 0 10px 30px rgba(111, 66, 193, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 60vh;
+            min-height: 450px;
+            background: linear-gradient(rgba(44, 37, 35, 0.5), rgba(44, 37, 35, 0.6)), url('spa_hero_banner.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .btn-scroll {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: white;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .btn-scroll:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background-color: var(--primary-light);
+        }
+
+        /* Container & Grid layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+        }
+
+        /* Course Cards Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(111, 66, 193, 0.03);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(111, 66, 193, 0.1);
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .course-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .course-duration {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+        }
+
+        .course-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .btn-booking-shortcut {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .course-card:hover .btn-booking-shortcut {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Reservation Section */
+        .reservation-section {
+            background: linear-gradient(135deg, #f5f0ff 0%, #fff7f2 100%);
+            border-radius: 24px;
+            padding: 50px 30px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .iframe-container {
+            width: 100%;
+            max-width: 480px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 700px;
+            border: none;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c2523;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 50px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        footer .info-links {
+            margin: 20px 0;
+        }
+
+        footer .info-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer .info-links a:hover {
+            color: white;
+        }
+
+        /* Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1.05rem;
+            }
+            .container {
+                padding: 50px 15px;
+            }
+            .reservation-section {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>숨비 in 치유</h1>
+            <p>도심 속 복잡함을 벗어나 온전한 휴식을 마주하는 곳. 프리미엄 맞춤형 아로마 테라피 브랜드입니다.</p>
+            <a href="#reserve-now" class="btn-scroll">지금 바로 실시간 예약하기</a>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Courses Section -->
+        <section>
+            <div class="section-title">
+                <h2>프로그램 안내</h2>
+                <p>도심 피로를 녹여줄 꼼꼼한 세 개의 시그니처 코스</p>
+            </div>
+            
+            <div class="courses-grid">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div>
+                        <div class="course-header">
+                            <span class="course-name">순환케어</span>
+                            <span class="course-duration">60분</span>
+                        </div>
+                        <p class="course-desc">부드러운 아로마 림프 및 순환 관리를 통해 몸의 불필요한 노폐물 배출과 긴장 완화를 극대화하는 릴렉싱 케어 코스입니다.</p>
+                    </div>
+                    <a href="#reserve-now" class="btn-booking-shortcut">예약 진행하기</a>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div>
+                        <div class="course-header">
+                            <span class="course-name">전신스페셜</span>
+                            <span class="course-duration">90분</span>
+                        </div>
+                        <p class="course-desc">머리부터 발끝까지 뭉친 근육을 부드럽고 섬세하게 풀어주는 숨비의 시그니처 전신 케어로 깊은 휴식을 안겨드립니다.</p>
+                    </div>
+                    <a href="#reserve-now" class="btn-booking-shortcut">예약 진행하기</a>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div>
+                        <div class="course-header">
+                            <span class="course-name">전신스페셜앰플</span>
+                            <span class="course-duration">120분</span>
+                        </div>
+                        <p class="course-desc">최고급 아로마 오일과 고농축 케어 앰플을 전신에 도포하여 집중적인 피로 회복과 고품격 영양 공급을 동시에 진행하는 최상위 코스입니다.</p>
+                    </div>
+                    <a href="#reserve-now" class="btn-booking-shortcut">예약 진행하기</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="reserve-now" style="scroll-margin-top: 50px;">
+            <div class="section-title">
+                <h2>실시간 간편 예약</h2>
+                <p>일정 선택부터 정보 입력까지 한 번에 완료해 보세요</p>
+            </div>
+            
+            <div class="reservation-section">
+                <div class="iframe-container">
+                    <!-- 고객 실시간 예약 <iframe> 임베드 -->
+                    <iframe src="https://aroma-manager-218876727768.asia-northeast3.run.app/reserve"></iframe>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3>숨비 in 치유</h3>
+        <p>영업시간: 오전 10:00 - 오후 9:00 (연중무휴)</p>
+        <p>주소: 서울시 강남구 테헤란로 힐링 타워 7층</p>
+        <div class="info-links">
+            <a href="tel:010-1234-5678">📞 전화 문의하기</a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.8rem; color: rgba(255, 255, 255, 0.4);">© 2026 숨비 in 치유. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for booking shortcuts
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
